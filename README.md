@@ -1,11 +1,11 @@
-# grunt-xonom
+// grunt-xonom
 Script generator between angularjs and expressjs 
 
-#usage
+//usage
 
 
 ```Javascript
-#server side declaration of user.controller.server.js
+//server side declaration of user.controller.server.js
 
 module.exports = {
  
@@ -19,7 +19,7 @@ module.exports = {
 ```
 
 ```Javascript
-#client side usage
+//client side usage
 app.controller("userController", function(xonom) {
   
   var userId = 1;
