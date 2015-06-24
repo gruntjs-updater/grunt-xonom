@@ -1,7 +1,7 @@
-// grunt-xonom
+# grunt-xonom
 Script generator between angularjs and expressjs 
 
-//usage
+#usage
 
 
 ```Javascript
