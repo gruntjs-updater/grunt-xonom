@@ -62,6 +62,20 @@ require("./xonom.route.js")(router);
 
 * add line into your angular.js module declaration file
 
+```Html
+<head>
+  ...
+  <script type="text/javascript" src="angular.js" />
+  <script type="text/javascript" src="xonom.service.js" />
+  ...
+</head>
+```
+
 ```Javascript
 angular.module("yourApp", ["xonom"]);
+angular.controller("userController", function(xonom) {
+
+ //use xonom inside controller
+
+}
 ```
