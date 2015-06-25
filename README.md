@@ -5,7 +5,7 @@ Script generator between angularjs and expressjs
 
 
 ```Javascript
-//server side declaration of user.controller.server.js
+//server side declaration of some.controller.server.js
 
 module.exports = {
  
@@ -20,10 +20,10 @@ module.exports = {
 
 ```Javascript
 //client side usage
-app.controller("userController", function(xonom) {
+app.controller("someController", function(xonom) {
   
   var inputNumber = 1;
-  xonom.user.getTwits(inputNumber, function(outputNumber) {
+  xonom.user.increaseNumber(inputNumber, function(outputNumber) {
      console.log(outputNumber);  //=> 2
   });
 })
@@ -38,16 +38,21 @@ grunt.initConfig({
   xonom: {
       options: {
         input: {
-          controllers: [ 'user.controller.server.js' ]
+          controllers: [ 'some.controller.server.js' ]
         },
         output: {
            angular-service: "xonom.service.js",
            express-route: "xonom.route.js"
   }
  }
-})
+});
+
+grunt.registerTask("grunt-xonom");
 ```
-This task will generate 2 files xonom.service.js, xonom.route.js
+This task generates 2 files xonom.service.js, xonom.route.js based on input controllers
+
+xonom.service.js contains angular service declaration with generated functions for communication with server
+xonom.route.js contains express routes for communication with client
 
 * add line into your server.js file in order to attach xonom.route.js into your express
 
