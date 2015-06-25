@@ -23,7 +23,8 @@ module.exports = {
 app.controller("someController", function(xonom) {
   
   var inputNumber = 1;
-  xonom.user.increaseNumber(inputNumber, function(outputNumber) {
+  //"some" was extracted from some.controller.server.js
+  xonom.some.increaseNumber(inputNumber, function(outputNumber) {
      console.log(outputNumber);  //=> 2
   });
 })
