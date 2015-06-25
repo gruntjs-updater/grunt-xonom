@@ -24,8 +24,7 @@ app.controller("userController", function(xonom) {
   
   var userId = 1;
   xonom.user.getTwits(userId, function(data) {
-     console.log(data);
-     #prints 3
+     console.log(data);  //=> 3
   });
 })
 ```
