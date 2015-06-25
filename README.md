@@ -5,12 +5,12 @@ Script generator between angularjs and expressjs
 
 
 ```Javascript
-//server side declaration of user.controller.server.js
+//server side declaration of some.controller.server.js
 
 module.exports = {
  
-   getTwits: function(userId, callback) {
-     callback([userId + 2])
+   increaseNumber: function(inputNumber, callback) {
+     callback(inputNumber + 1)
    }
 
 
@@ -20,12 +20,12 @@ module.exports = {
 
 ```Javascript
 //client side usage
-app.controller("userController", function(xonom) {
+app.controller("someController", function(xonom) {
   
-  var userId = 1;
-  xonom.user.getTwits(userId, function(data) {
-     console.log(data);
-     #prints 3
+  var inputNumber = 1;
+  //"some" was extracted from some.controller.server.js
+  xonom.some.increaseNumber(inputNumber, function(outputNumber) {
+     console.log(outputNumber);  //=> 2
   });
 })
 ```
@@ -39,16 +39,21 @@ grunt.initConfig({
   xonom: {
       options: {
         input: {
-          controllers: [ 'user.controller.server.js' ]
+          controllers: [ 'some.controller.server.js' ]
         },
         output: {
            angular-service: "xonom.service.js",
            express-route: "xonom.route.js"
   }
  }
-})
+});
+
+grunt.registerTask("grunt-xonom");
 ```
-This task will generate 2 files xonom.service.js, xonom.route.js
+This task generates 2 files xonom.service.js, xonom.route.js based on input controllers
+
+xonom.service.js contains angular service declaration with generated functions for communication with server
+xonom.route.js contains express routes for communication with client
 
 * add line into your server.js file in order to attach xonom.route.js into your express
 
@@ -63,6 +68,20 @@ require("./xonom.route.js")(router);
 
 * add line into your angular.js module declaration file
 
+```Html
+<head>
+  ...
+  <script type="text/javascript" src="angular.js" />
+  <script type="text/javascript" src="xonom.service.js" />
+  ...
+</head>
+```
+
 ```Javascript
 angular.module("yourApp", ["xonom"]);
+angular.controller("userController", function(xonom) {
+
+ //use xonom inside controller
+
+}
 ```
