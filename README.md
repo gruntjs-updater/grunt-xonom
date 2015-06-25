@@ -9,8 +9,8 @@ Script generator between angularjs and expressjs
 
 module.exports = {
  
-   getTwits: function(userId, callback) {
-     callback([userId + 2])
+   increaseNumber: function(inputNumber, callback) {
+     callback(inputNumber + 1)
    }
 
 
@@ -22,9 +22,9 @@ module.exports = {
 //client side usage
 app.controller("userController", function(xonom) {
   
-  var userId = 1;
-  xonom.user.getTwits(userId, function(data) {
-     console.log(data);  //=> 3
+  var inputNumber = 1;
+  xonom.user.getTwits(inputNumber, function(outputNumber) {
+     console.log(outputNumber);  //=> 2
   });
 })
 ```
