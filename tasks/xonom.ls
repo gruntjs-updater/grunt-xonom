@@ -18,7 +18,7 @@ module.exports = (grunt)->
             const join = (d, arr) -->
                arr.join d
             const make-angular-service = (content)->
-                "app.service('xonom', function($http) {
+                "angular.module('xonom', []).service('xonom', function($http) {
                     \r\n var make = function(name) {
                       \r\n  return function() {
                         \r\n   var args = [].slice.call(arguments);
