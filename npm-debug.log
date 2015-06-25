@@ -1,0 +1,80 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/v0.10.35/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/v0.10.35/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /home/ubuntu/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz', '.' ]
+11 verbose tarball /home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz
+12 verbose folder .
+13 info prepublish grunt-xonom@0.1.0
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /home/ubuntu/.npm/1f1177db-tar.lock
+16 silly lockFile ff50d4c7-pm-grunt-xonom-0-1-0-package-tgz tar:///home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz
+17 verbose lock tar:///home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz /home/ubuntu/.npm/ff50d4c7-pm-grunt-xonom-0-1-0-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile ff50d4c7-pm-grunt-xonom-0-1-0-package-tgz tar:///home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz
+21 silly lockFile ff50d4c7-pm-grunt-xonom-0-1-0-package-tgz tar:///home/ubuntu/.npm/grunt-xonom/0.1.0/package.tgz
+22 silly lockFile 6e2d0f48-tu-npm-grunt-xonom-0-1-0-package /home/ubuntu/.npm/grunt-xonom/0.1.0/package
+23 verbose lock /home/ubuntu/.npm/grunt-xonom/0.1.0/package /home/ubuntu/.npm/6e2d0f48-tu-npm-grunt-xonom-0-1-0-package.lock
+24 silly lockFile 6e2d0f48-tu-npm-grunt-xonom-0-1-0-package /home/ubuntu/.npm/grunt-xonom/0.1.0/package
+25 silly lockFile 6e2d0f48-tu-npm-grunt-xonom-0-1-0-package /home/ubuntu/.npm/grunt-xonom/0.1.0/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'grunt-xonom',
+28 silly publish   description: 'Provides clean communication between angular and express',
+28 silly publish   version: '0.1.0',
+28 silly publish   homepage: 'https://github.com/gruntjs/',
+28 silly publish   author: { name: 'Gotogether', url: 'http://gruntjs.com/' },
+28 silly publish   repository: { type: 'git', url: 'git@github.com:askucher/grunt-xonom.git' },
+28 silly publish   bugs: { url: 'https://github.com/askucher/grunt-xonom/issues' },
+28 silly publish   licenses:
+28 silly publish    [ { type: 'MIT',
+28 silly publish        url: 'https://github.com/askucher/grunt-xonom/blob/master/LICENSE-MIT' } ],
+28 silly publish   engines: { node: '>= 0.8.0' },
+28 silly publish   scripts: { test: 'grunt test' },
+28 silly publish   dependencies: {},
+28 silly publish   devDependencies: { grunt: '~0.4.0' },
+28 silly publish   peerDependencies: { grunt: '~0.4.0' },
+28 silly publish   keywords: [ 'gruntplugin' ],
+28 silly publish   files: [ 'tasks', 'LICENSE-MIT' ],
+28 silly publish   _id: 'grunt-xonom@0.1.0',
+28 silly publish   dist:
+28 silly publish    { shasum: 'f532dba4b8212674c7c013e146bda6638b9048f6',
+28 silly publish      tarball: 'http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz' },
+28 silly publish   _from: '.',
+28 silly publish   _npmVersion: '0.1.00',
+28 silly publish   _npmUser: { name: 'askucher', email: 'a.stegno@gmail.com' },
+28 silly publish   maintainers: [],
+28 silly publish   directories: {},
+28 silly publish   _shasum: 'db694b58598f33e8b8f52b0eec41cc3e87aa4be9',
+28 silly publish   _resolved: 'https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz',
+28 silly publish   gitHead: '80ad72f81db99936eb566fd4449b9ef5b8f81ca6',
+28 silly publish   readme: 'ERROR: No README data found!' }
+29 error need auth auth and email required for publishing
+29 error need auth You need to authorize this machine using `npm adduser`
+30 error System Linux 3.14.13-c9
+31 error command "/home/ubuntu/.nvm/v0.10.35/bin/node" "/home/ubuntu/.nvm/v0.10.35/bin/npm" "publish"
+32 error cwd /home/ubuntu/workspace/node_modules/grunt-xonom
+33 error node -v v0.10.35
+34 error npm -v 1.4.28
+35 error code ENEEDAUTH
+36 verbose exit [ 1, true ]
