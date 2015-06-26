@@ -25,7 +25,7 @@ app.controller("someController", function(xonom) {
   });
 })
 ```
-[More examples](https://github.com/askucher/grunt-xonom/blob/master/examples.md:)
+[More examples](https://github.com/askucher/grunt-xonom/blob/master/examples.md)
 
 #install
 * npm install grunt-xonom
