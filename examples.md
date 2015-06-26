@@ -65,27 +65,3 @@ app.controller("someController", function(xonom) {
 });
 ```
 
-#obtain json from the server
-```Javascript
-//test.controller.server.js
-module.exports = {
-    apiFunction: function(callback) {
-        var json = {
-           test: 1
-        };
-        
-        callback(json);
-    }
-};
-//test.angular-controller.client.js
-app.controller("someController", function(xonom) {
-     var json = {
-        test: 1
-     };
-     
-     xonom.test.apiFunction(function(err, result) {
-        console.log(result) //=> {  test: 1 }
-     });
-});
-```
-
