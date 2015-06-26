@@ -3,17 +3,13 @@ Script generator between angularjs and expressjs
 
 #usage
 
-
 ```Javascript
 //server side declaration of some.controller.server.js
 
 module.exports = {
- 
    increaseNumber: function(inputNumber, callback) {
      callback(inputNumber + 1)
    }
-
-
 };
 
 ```
@@ -29,11 +25,12 @@ app.controller("someController", function(xonom) {
   });
 })
 ```
-
+[More examples](https://github.com/askucher/grunt-xonom/blob/master/examples.md:)
 
 #install
 * npm install grunt-xonom
 * add grunt task grunt-xonom into your gruntfile.js
+
 ```Javascript
 grunt.initConfig({
   xonom: {
