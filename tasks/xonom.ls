@@ -25,7 +25,7 @@ module.exports = (grunt)->
                         \r\n   var callback = args.pop();
                         \r\n   $http.post(name, 
                                    args)
-                             .success(function(data) { callback(data.result)  })
+                             .success(function(data) { callback(null, data.result)  })
                              .error(function(err) { callback(err) });
                      \r\n }
                    \r\n};

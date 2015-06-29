@@ -21,7 +21,7 @@
         return arr.join(d);
       });
       makeAngularService = function(content){
-        return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = function(name) {\r\n  return function() {\r\n   var args = [].slice.call(arguments);\r\n   var callback = args.pop();\r\n   $http.post(name, args).success(function(data) { callback(data.result)  }).error(function(err) { callback(err) });\r\n }\r\n};\r\n return " + content + " \r\n});";
+        return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = function(name) {\r\n  return function() {\r\n   var args = [].slice.call(arguments);\r\n   var callback = args.pop();\r\n   $http.post(name, args).success(function(data) { callback(null, data.result)  }).error(function(err) { callback(err) });\r\n }\r\n};\r\n return " + content + " \r\n});";
       };
       getMethods = function(str){
         var module, require, obj, res, m;
