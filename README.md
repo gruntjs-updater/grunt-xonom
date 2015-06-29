@@ -16,6 +16,8 @@ app/
 
 ###User.controller.server.js
 
+You declare export functions with last callback argument
+
 ```Javascript 
 var db = require('./your-server-db.js');
 module.exports = {
@@ -34,6 +36,8 @@ module.exports = {
 ```
 
 ###User.controller.client.js
+
+And use them on client side. Xonom generates middleware for you
 
 ```Javascript 
 
