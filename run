@@ -1,7 +1,0 @@
-cd tasks/
-lsc -c xonom.ls
-cd ..
-git add .
-git commit -m "Development"
-git push origin master
-npm publish
