@@ -24,11 +24,14 @@
         return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = function(name) {\r\n  return function() {\r\n   var args = [].slice.call(arguments);\r\n   var callback = args.pop();\r\n   $http.post(name, args).success(function(data) { callback(data.result)  }).error(function(err) { callback(err) });\r\n }\r\n};\r\n return " + content + " \r\n});";
       };
       getMethods = function(str){
-        var module, obj, res, m;
+        var module, require, obj, res, m;
         module = {
           exports: {}
         };
-        obj = eval(str, module);
+        require = function(){
+          return {};
+        };
+        obj = eval(str, module, require);
         res = [];
         for (m in module.exports) {
           if (typeof obj[m] === 'function') {

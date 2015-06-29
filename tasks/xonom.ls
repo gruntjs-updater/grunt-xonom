@@ -34,7 +34,8 @@ module.exports = (grunt)->
             const get-methods = (str)->
                         const module = 
                              exports : {}
-                        const obj = eval str, module
+                        const require = -> {}
+                        const obj = eval str, module, require
                         const res = []
                         for m of module.exports
                           if typeof obj[m] is \function
