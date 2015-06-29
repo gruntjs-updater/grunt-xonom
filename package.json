@@ -1,7 +1,7 @@
 {
   "name": "grunt-xonom",
   "description": "Provides clean communication between angular and express",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/gruntjs/",
   "author": {
     "name": "Gotogether",
