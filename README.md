@@ -17,7 +17,7 @@ app/
 ###User.controller.server.js
 
 ```Javascript 
-var db = require('./server-db.js')
+var db = require('./your-server-db.js');
 module.exports = {
    all : function(callback) {
          // `user` collection is declared in config.json
@@ -79,7 +79,7 @@ grunt.initConfig({
   xonom: {
       options: {
         input: {
-          controllers: [ 'some.controller.server.js' ]
+          controllers: [ 'user.controller.server.js' ]
         },
         output: {
            angular-service: "xonom.service.js",
