@@ -1,31 +1,74 @@
 # grunt-xonom
 Script generator between angularjs and expressjs 
 
-#usage
+##EXAMPLE
 
-```Javascript
-//server side declaration of some.controller.server.js
+###Structure
 
+```sh
+app/
+ components/
+  user/
+   user.controller.client.js
+   user.controller.server.js
+   user.jade
+```
+
+###User.controller.server.js
+
+```Javascript 
+var db = require('./server-db.js')
 module.exports = {
-   increaseNumber: function(inputNumber, callback) {
-     callback(inputNumber + 1)
+   all : function(callback) {
+         // `user` collection is declared in config.json
+         db.user.find({}, { name: 1, _id: 1, connections: 1 }, function( err, users)  {
+              callback(users);
+         });
+   },
+   one: function(id, callback) {
+        db.user.findOne({ _id: id }, function( err, user ) {
+              callback(user);
+        });
    }
 };
-
 ```
 
-```Javascript
-//client side usage
-app.controller("someController", function(xonom) {
+###User.controller.client.js
+
+```Javascript 
+
+app.controller("user", function($scope, xonom) {
+  //`user` extracted from filename
+  xonom.user.all(function(err, users)) {
+    $scope.users = users;
+  };
   
-  var inputNumber = 1;
-  //"some" was extracted from some.controller.server.js
-  xonom.some.increaseNumber(inputNumber, function(outputNumber) {
-     console.log(outputNumber);  //=> 2
-  });
-})
+  $scope.getDetails = function(id) {
+     xonom.user.one(id, function(err, details) { 
+        $scope.details = details;
+     };
+  };
+});
+
 ```
-[More examples](https://github.com/askucher/grunt-xonom/blob/master/examples.md)
+
+###User.jade
+
+```Jade 
+.user.component(ng:controller="user")
+ .details(ng:if="details")
+  h3 details.name
+  p Connections: {{details.connections.length}}
+  p Events: {{details.events.length}}
+ .users
+   .user(ng:repeat="user in users" ng:click="getDetails(user._id)")
+      h3 {{user.name}}
+      p Connections: {{user.connections.length}}
+```
+
+
+
+
 
 #install
 * npm install grunt-xonom
