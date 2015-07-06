@@ -57,7 +57,6 @@
       generateObj = function(filename){
         var module, ref$, wrap, camel, makeNamedObj, generateObject;
         module = (ref$ = filename.match(/([a-z-]+)\.xonom/i)) != null ? ref$[1] : void 8;
-        console.log(filename, module);
         wrap = function(it){
           return "(" + it + ")";
         };
@@ -82,7 +81,7 @@
       input.controllers)))));
       mapRoute = function(filename){
         var module, camel, wrapController, applyRoute;
-        module = filename.match(/([a-z-]+)\.controller\.server\.js$/i)[1];
+        module = filename.match(/([a-z-]+)\.xonom/i)[1];
         camel = camelize(module);
         wrapController = function(content){
           return " var " + camel + " = require( __dirname + '/" + filename + "');\r\n" + content + "";

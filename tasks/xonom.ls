@@ -51,7 +51,7 @@ module.exports = (grunt)->
                 
                 const module = 
                    filename.match(/([a-z-]+)\.xonom/i)?1
-                console.log filename, module
+                #console.log filename, module
                 
                 const wrap = -> "(#it)"
                 
@@ -79,7 +79,7 @@ module.exports = (grunt)->
                               |> fs.write-file-sync output.angular-service, _
             const map-route = (filename) ->
                 const module = 
-                   filename.match(/([a-z-]+)\.controller\.server\.js$/i).1
+                   filename.match(/([a-z-]+)\.xonom/i).1
                 const camel = 
                     camelize module
                 const wrap-controller = (content)->
