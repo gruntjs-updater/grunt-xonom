@@ -122,7 +122,7 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function(router) {\r\nvar make = " + makeRoute.toString() + ";" + content + " \r\n}";
+        return "module.exports = function(router) {\r\nvar make = " + makeRoute.toString() + ";\r\n" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(

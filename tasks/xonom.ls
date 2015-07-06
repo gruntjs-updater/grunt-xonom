@@ -101,7 +101,7 @@ module.exports = (grunt)->
                 
             const apply-template = (content)->
               "module.exports = function(router) {\r\n
-                     var make = #{make-route.to-string!};
+                     var make = #{make-route.to-string!};\r\n
                      #content \r\n
                   }
               " 
