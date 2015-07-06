@@ -2,31 +2,35 @@
 (function(){
   module.exports = function(grunt){
     return grunt.registerTask('xonom', 'Generate api service and route for express', function(){
-      var input, output, makeService, makeRoute, fs, map, makeObj, join, makeAngularService, getMethods, getMethodsFromFile, camelize, generateObj, mapRoute, applyTemplate;
+      var input, output, makeService, ref$, makeRoute, fs, map, makeObj, join, makeAngularService, getMethods, getMethodsFromFile, camelize, generateObj, mapRoute, applyTemplate;
       input = this.options().input;
       output = this.options().output;
-      makeService = function(name){
-        return function(){
-          var args, callback;
-          args = [].slice.call(arguments);
-          callback = args.pop();
-          $http.post(name, args).success(function(data){
-            return callback(null, data.result);
-          }).error(function(err){
-            return callback(err);
-          });
-        };
-      };
-      makeRoute = function(func){
-        return function(req, resp){
-          req.body.push(function(result){
-            return resp.send({
-              result: result
+      makeService = (ref$ = this.options().makeService) != null
+        ? ref$
+        : function(name){
+          return function(){
+            var args, callback;
+            args = [].slice.call(arguments);
+            callback = args.pop();
+            $http.post(name, args).success(function(data){
+              return callback(null, data.result);
+            }).error(function(err){
+              return callback(err);
             });
-          });
-          func.apply(this, req.body);
+          };
         };
-      };
+      makeRoute = (ref$ = this.options().makeRoute) != null
+        ? ref$
+        : function(func){
+          return function(req, resp){
+            req.body.push(function(result){
+              return resp.send({
+                result: result
+              });
+            });
+            func.apply(this, req.body);
+          };
+        };
       fs = require('fs');
       map = curry$(function(f, xs){
         var i$, len$, x, results$ = [];
@@ -43,7 +47,7 @@
         return arr.join(d);
       });
       makeAngularService = function(content){
-        return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = " + makeService.toString() + "\r\n return " + content + " \r\n});";
+        return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = " + makeService.toString() + ";\r\n return " + content + " \r\n});";
       };
       getMethods = function(str){
         var module, require, obj, res, m;
@@ -118,7 +122,7 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function(router) {var make = " + makeRoute.toString() + "" + content + " \r\n}";
+        return "module.exports = function(router) {\r\nvar make = " + makeRoute.toString() + ";" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(

@@ -5,7 +5,7 @@ module.exports = (grunt)->
       * ->
             const input = @options!.input
             const output = @options!.output
-            const make-service = (name)->
+            const make-service = @options!.make-service ? (name)->
                 !->
                     const args = [].slice.call(arguments)
                     const callback = args.pop!
@@ -13,7 +13,7 @@ module.exports = (grunt)->
                       .post name, args 
                       .success (data)-> callback null, data.result
                       .error (err)-> callback err
-            const make-route = (func) ->
+            const make-route = @options!.make-route ? (func) ->
                 (req, resp) !->
                     req.body.push (result)->
                       resp.send do 
@@ -31,7 +31,7 @@ module.exports = (grunt)->
                arr.join d
             const make-angular-service = (content)->
                 "angular.module('xonom', []).service('xonom', function($http) {
-                    \r\n var make = #{make-service.to-string!}
+                    \r\n var make = #{make-service.to-string!};
                    \r\n return #content 
                 \r\n});"
             const get-methods = (str)->
@@ -100,8 +100,8 @@ module.exports = (grunt)->
                          |> wrap-controller
                 
             const apply-template = (content)->
-              "module.exports = function(router) {
-                     var make = #{make-route.to-string!}
+              "module.exports = function(router) {\r\n
+                     var make = #{make-route.to-string!};
                      #content \r\n
                   }
               " 
