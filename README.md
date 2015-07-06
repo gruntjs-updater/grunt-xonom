@@ -86,9 +86,9 @@ grunt.initConfig({
           controllers: [ 'user.controller.server.js' ]
         },
         output: {
-           angular-service: "xonom.service.js"
-           ,express-route: "xonom.route.js"
+           angularService: "xonom.service.js"
            /*,makeSercice: function() { ... } */
+           ,expressRoute: "xonom.route.js"
            /*,makeRoute: function() { ... } */
   }
  }
