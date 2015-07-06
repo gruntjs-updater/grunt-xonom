@@ -98,16 +98,16 @@
       applyTemplate = function(content){
         var make;
         make = function(func){
-          return function(req, resp){
+          (function(req, resp){
             var callback;
-            return callback = function(result){
+            callback = function(result){
               resp.send({
                 result: result
               });
               req.body.push(callback);
               return func.apply(this, req.body);
             };
-          };
+          });
         };
         return "module.exports = function(router) {var make = " + make.toString() + "" + content + " \r\n}";
       };

@@ -96,8 +96,8 @@ module.exports = (grunt)->
                 
             const apply-template = (content)->
               
-              const make = (func)->
-                      (req, resp)->
+              const make = (func) !->
+                      (req, resp) !->
                           const callback = (result)->
                               resp.send do 
                                   result: result
