@@ -48,8 +48,10 @@ module.exports = (grunt)->
                   str.replace /[-_\s]+(.)?/g , cp
             const generate-obj = (filename) ->
                 
+                console.log module
                 const module = 
-                   filename.match(/([a-z-]+)\.xonom\.server\.js$/i).1
+                   filename.match(/([a-z-]+)\.xonom/i).1
+                
                 
                 const wrap = -> "(#it)"
                 

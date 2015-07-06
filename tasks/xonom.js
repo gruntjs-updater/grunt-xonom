@@ -56,7 +56,8 @@
       };
       generateObj = function(filename){
         var module, wrap, camel, makeNamedObj, generateObject;
-        module = filename.match(/([a-z-]+)\.xonom\.server\.js$/i)[1];
+        console.log(module);
+        module = filename.match(/([a-z-]+)\.xonom/i)[1];
         wrap = function(it){
           return "(" + it + ")";
         };
