@@ -87,7 +87,7 @@
           return " var " + camel + " = require( __dirname + '/" + filename + "');\r\n" + content + "";
         };
         applyRoute = function(name){
-          return " router.post('/" + module + "/" + name + "', function(req, resp) {\r\n var callback = function (result) {resp.send({result: result});\r\n};req.body.push(callback);\r\n" + camel + "." + name + ".apply(this, req.body);});";
+          return " router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
         };
         return wrapController(
         join('\r\n')(
@@ -96,7 +96,7 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function(router) {\r\n" + content + " \r\n}";
+        return "module.exports = function(router) {\r\n\r\n var make = function(func) {\r\n  return function(req, resp) {\r\n   var callback = function (result) {\r\n    resp.send({result: result});\r\n\r\n   };\r\n   req.body.push(callback);\r\n   func.apply(this, req.body);\r\n }\r\n};" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(
