@@ -96,16 +96,16 @@ module.exports = (grunt)->
                 
             const apply-template = (content)->
               
-              "module.exports = function(router) {\r\n
-                     \r\n var make = function(func) {
-                      \r\n  return function(req, resp) {
-                        \r\n   var callback = function (result) {
-                        \r\n    resp.send({result: result});\r\n
-                        \r\n   };
-                        \r\n   req.body.push(callback);
-                        \r\n   func.apply(this, req.body);
-                     \r\n }
-                    \r\n};
+              const make = (router)->
+                   (func)->
+                      (req, resp)->
+                          const callback = (result)->
+                              resp.send do 
+                                  result: result
+                              req.body.push callback
+                              func.apply this, req.body
+              "module.exports = function(router) {
+                     var make = #{make.to-source!}
                      #content \r\n
                   }
               " 

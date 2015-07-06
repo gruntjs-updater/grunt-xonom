@@ -96,7 +96,22 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function(router) {\r\n\r\n var make = function(func) {\r\n  return function(req, resp) {\r\n   var callback = function (result) {\r\n    resp.send({result: result});\r\n\r\n   };\r\n   req.body.push(callback);\r\n   func.apply(this, req.body);\r\n }\r\n};" + content + " \r\n}";
+        var make;
+        make = function(router){
+          return function(func){
+            return function(req, resp){
+              var callback;
+              return callback = function(result){
+                resp.send({
+                  result: result
+                });
+                req.body.push(callback);
+                return func.apply(this, req.body);
+              };
+            };
+          };
+        };
+        return "module.exports = function(router) {var make = " + make.toSource() + "" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(
