@@ -55,8 +55,8 @@
         return str.replace(/[-_\s]+(.)?/g, cp);
       };
       generateObj = function(filename){
-        var module, wrap, camel, makeNamedObj, generateObject;
-        module = filename.match(/([a-z-]+)\.xonom/i)[1];
+        var module, ref$, wrap, camel, makeNamedObj, generateObject;
+        module = (ref$ = filename.match(/([a-z-]+)\.xonom/i)) != null ? ref$[1] : void 8;
         console.log(filename, module);
         wrap = function(it){
           return "(" + it + ")";
