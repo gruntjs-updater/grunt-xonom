@@ -105,7 +105,7 @@ module.exports = (grunt)->
                               req.body.push callback
                               func.apply this, req.body
               "module.exports = function(router) {
-                     var make = #{make.to-source!}
+                     var make = #{make.to-string!}
                      #content \r\n
                   }
               " 

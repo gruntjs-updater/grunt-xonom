@@ -111,7 +111,7 @@
             };
           };
         };
-        return "module.exports = function(router) {var make = " + make.toSource() + "" + content + " \r\n}";
+        return "module.exports = function(router) {var make = " + make.toString() + "" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(
