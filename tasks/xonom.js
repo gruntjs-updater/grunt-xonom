@@ -97,17 +97,15 @@
       };
       applyTemplate = function(content){
         var make;
-        make = function(router){
-          return function(func){
-            return function(req, resp){
-              var callback;
-              return callback = function(result){
-                resp.send({
-                  result: result
-                });
-                req.body.push(callback);
-                return func.apply(this, req.body);
-              };
+        make = function(func){
+          return function(req, resp){
+            var callback;
+            return callback = function(result){
+              resp.send({
+                result: result
+              });
+              req.body.push(callback);
+              return func.apply(this, req.body);
             };
           };
         };
