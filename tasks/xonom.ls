@@ -49,7 +49,7 @@ module.exports = (grunt)->
             const generate-obj = (filename) ->
                 
                 const module = 
-                   filename.match(/([a-z-]+)\.controller\.server\.js$/i).1
+                   filename.match(/([a-z-]+)\.xonom\.server\.js$/i).1
                 
                 const wrap = -> "(#it)"
                 
