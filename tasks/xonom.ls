@@ -5,6 +5,20 @@ module.exports = (grunt)->
       * ->
             const input = @options!.input
             const output = @options!.output
+            const make-service = (name)->
+                !->
+                    const args = [].slice.call(arguments)
+                    const callback = args.pop!
+                    $http
+                      .post name, args 
+                      .success (data)-> callback null, data.result
+                      .error (err)-> callback err
+            const make-route = (func) ->
+                (req, resp) !->
+                    req.body.push (result)->
+                      resp.send do 
+                          result: result
+                    func.apply this, req.body
             
             #input: server controllers filenames array
             #output: generated angular service 'api'
@@ -17,16 +31,7 @@ module.exports = (grunt)->
                arr.join d
             const make-angular-service = (content)->
                 "angular.module('xonom', []).service('xonom', function($http) {
-                    \r\n var make = function(name) {
-                      \r\n  return function() {
-                        \r\n   var args = [].slice.call(arguments);
-                        \r\n   var callback = args.pop();
-                        \r\n   $http.post(name, 
-                                   args)
-                             .success(function(data) { callback(null, data.result)  })
-                             .error(function(err) { callback(err) });
-                     \r\n }
-                   \r\n};
+                    \r\n var make = #{make-service.to-string!}
                    \r\n return #content 
                 \r\n});"
             const get-methods = (str)->
@@ -95,16 +100,8 @@ module.exports = (grunt)->
                          |> wrap-controller
                 
             const apply-template = (content)->
-              
-              const make = (func) !->
-                      (req, resp) !->
-                          const callback = (result)->
-                              resp.send do 
-                                  result: result
-                              req.body.push callback
-                              func.apply this, req.body
               "module.exports = function(router) {
-                     var make = #{make.to-string!}
+                     var make = #{make-route.to-string!}
                      #content \r\n
                   }
               " 
