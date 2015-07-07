@@ -86,7 +86,7 @@ module.exports = (grunt)->
                 const camel = 
                     camelize module
                 const wrap-controller = (content)->
-                    " var #camel = require('{#__dirname}/#filename');\r\n
+                    " var #camel = require('../#filename');\r\n
                       
                       #content
                     "

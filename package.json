@@ -1,31 +1,9 @@
 {
-  "subversion": 21,
-  "homepage": "https://github.com/gruntjs/",
-  "author": {
-    "name": "Gotogether",
-    "url": "http://gruntjs.com/"
+  "scripts": {
+    "test": "grunt test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:askucher/grunt-xonom.git"
-  },
-  "files": [
-    "tasks",
-    "LICENSE-MIT"
-  ],
-  "_id": "grunt-xonom-api@0.6.0",
-  "peerDependencies": {
-    "grunt": "~0.4.0"
-  },
-  "keywords": [
-    "gruntplugin"
-  ],
-  "directories": {},
-  "maintainers": [],
-  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
-  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f6",
-  "bugs": {
-    "url": "https://github.com/askucher/grunt-xonom/issues"
+  "engines": {
+    "node": ">= 0.8.0"
   },
   "licenses": [
     {
@@ -33,17 +11,16 @@
       "url": "https://github.com/askucher/grunt-xonom/blob/master/LICENSE-MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.8.0"
+  "bugs": {
+    "url": "https://github.com/askucher/grunt-xonom/issues"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "~0.4.0"
-  },
-  "version": "0.1.21",
+  "_shasum": "f532dba4b8212674c7c013e146bda6638b9048f6",
+  "_resolved": "https://registry.npmjs.org/grunt-xonom-api/-/grunt-xonom-api-0.6.0.tgz",
+  "maintainers": [],
+  "directories": {},
+  "subversion": 22,
+  "homepage": "https://github.com/gruntjs/",
+  "version": "0.1.22",
   "uperversion": "0.1",
   "name": "grunt-xonom",
   "description": "Provides clean communication between angular and express",
@@ -56,5 +33,28 @@
   "_npmUser": {
     "name": "askucher",
     "email": "a.stegno@gmail.com"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "dependencies": {},
+  "keywords": [
+    "gruntplugin"
+  ],
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "_id": "grunt-xonom-api@0.6.0",
+  "files": [
+    "tasks",
+    "LICENSE-MIT"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:askucher/grunt-xonom.git"
+  },
+  "author": {
+    "name": "Gotogether",
+    "url": "http://gruntjs.com/"
   }
 }
