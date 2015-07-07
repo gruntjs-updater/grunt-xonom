@@ -37,7 +37,7 @@ module.exports = (grunt)->
             const get-methods = (str)->
                         const module = 
                              exports : {}
-                        const require = -> {}
+                        const require = -> ->
                         const obj = eval str, module, require
                         const res = []
                         for m of module.exports

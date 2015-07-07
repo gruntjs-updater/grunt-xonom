@@ -55,7 +55,7 @@
           exports: {}
         };
         require = function(){
-          return {};
+          return function(){};
         };
         obj = eval(str, module, require);
         res = [];
