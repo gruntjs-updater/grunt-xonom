@@ -80,13 +80,15 @@ module.exports = (grunt)->
                               |> make-obj
                               |> make-angular-service
                               |> fs.write-file-sync output.angular-service, _
+            const path = require \path
             const map-route = (filename) ->
                 const module = 
                    filename.match(/([a-z-]+)\.xonom/i).1
                 const camel = 
                     camelize module
+                const abs = path.resolve filename
                 const wrap-controller = (content)->
-                    " var #camel = require('root-require')('#filename');\r\n
+                    " var #camel = require('#abs');\r\n
                       
                       #content
                     "

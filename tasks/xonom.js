@@ -2,7 +2,7 @@
 (function(){
   module.exports = function(grunt){
     return grunt.registerTask('xonom', 'Generate api service and route for express', function(){
-      var input, output, makeService, ref$, makeRoute, fs, map, makeObj, join, makeAngularService, getMethods, getMethodsFromFile, camelize, generateObj, mapRoute, applyTemplate;
+      var input, output, makeService, ref$, makeRoute, fs, map, makeObj, join, makeAngularService, getMethods, getMethodsFromFile, camelize, generateObj, path, mapRoute, applyTemplate;
       input = this.options().input;
       output = this.options().output;
       makeService = (ref$ = this.options().makeService) != null
@@ -105,12 +105,14 @@
       join(',')(
       map(generateObj)(
       input.controllers)))));
+      path = require('path');
       mapRoute = function(filename){
-        var module, camel, wrapController, applyRoute;
+        var module, camel, abs, wrapController, applyRoute;
         module = filename.match(/([a-z-]+)\.xonom/i)[1];
         camel = camelize(module);
+        abs = path.resolve(filename);
         wrapController = function(content){
-          return " var " + camel + " = require('root-require')('" + filename + "');\r\n" + content + "";
+          return " var " + camel + " = require('" + abs + "');\r\n" + content + "";
         };
         applyRoute = function(name){
           return " router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
