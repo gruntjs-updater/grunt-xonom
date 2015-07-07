@@ -110,7 +110,7 @@
         module = filename.match(/([a-z-]+)\.xonom/i)[1];
         camel = camelize(module);
         wrapController = function(content){
-          return " var " + camel + " = require('../" + filename + "');\r\n" + content + "";
+          return " var " + camel + " = require('require-root')('" + filename + "');\r\n" + content + "";
         };
         applyRoute = function(name){
           return " router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
