@@ -35,8 +35,7 @@ module.exports = (grunt)->
                    \r\n return #content 
                 \r\n});"
             const get-methods = (str)->
-                        const module = 
-                             exports : {}
+                        const module = {}
                         const require = -> ->
                         const obj = eval str, module, require
                         const res = []

@@ -51,9 +51,7 @@
       };
       getMethods = function(str){
         var module, require, obj, res, exports, m;
-        module = {
-          exports: {}
-        };
+        module = {};
         require = function(){
           return function(){};
         };
