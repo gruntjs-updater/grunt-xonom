@@ -54,7 +54,7 @@ module.exports = (grunt)->
                 
                 
                 const module = 
-                   filename.match(/([a-z-]+)\.xonom/i)?1
+                   filename.match(/([a-z-]+)\.api/i)?1
                 #console.log filename, module
                 
                 const wrap = -> "(#it)"

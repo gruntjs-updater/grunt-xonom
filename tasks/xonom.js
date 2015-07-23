@@ -83,7 +83,7 @@
       };
       generateObj = function(filename){
         var module, ref$, wrap, camel, makeNamedObj, generateObject;
-        module = (ref$ = filename.match(/([a-z-]+)\.xonom/i)) != null ? ref$[1] : void 8;
+        module = (ref$ = filename.match(/([a-z-]+)\.api/i)) != null ? ref$[1] : void 8;
         wrap = function(it){
           return "(" + it + ")";
         };
