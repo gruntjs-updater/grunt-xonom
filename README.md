@@ -10,25 +10,24 @@ app/
  components/
   user/
    user.controller.client.js
-   user.controller.server.js
+   user.api.server.js
    user.jade
 ```
 
-###User.controller.server.js
+###User.api.server.js
 
 You declare export functions with last callback argument
 
 ```Javascript 
-var db = require('./your-server-db.js');
-module.exports = {
+module.exports = function($db) {
    all : function(callback) {
          // `user` collection is declared in config.json
-         db.user.find({}, { name: 1, _id: 1, connections: 1 }, function( err, users)  {
+         $db.user.find({}, { name: 1, _id: 1, connections: 1 }, function( err, users)  {
               callback(users);
          });
    },
    one: function(id, callback) {
-        db.user.findOne({ _id: id }, function( err, user ) {
+        $db.user.findOne({ _id: id }, function( err, user ) {
               callback(user);
         });
    }
@@ -39,16 +38,22 @@ module.exports = {
 
 And use them on client side. Xonom generates middleware for you
 
+
+```Javascript
+angular.module("yourApp", ["xonom"]);
+```
+
+
 ```Javascript 
 
-app.controller("user", function($scope, xonom) {
+app.controller("user", function($scope, $xonom) {
   //`user` extracted from filename
-  xonom.user.all(function(err, users)) {
+  $xonom.user.all(function(err, users)) {
     $scope.users = users;
   };
   
   $scope.getDetails = function(id) {
-     xonom.user.one(id, function(err, details) { 
+     $xonom.user.one(id, function(err, details) { 
         $scope.details = details;
      };
   };
@@ -123,13 +128,4 @@ xonom.require("./xonom.route.js")
   <script type="text/javascript" src="xonom.service.js" />
   ...
 </head>
-```
-
-```Javascript
-angular.module("yourApp", ["xonom"]);
-angular.controller("userController", function($xonom) {
-
- //use xonom inside controller
-
-}
 ```
