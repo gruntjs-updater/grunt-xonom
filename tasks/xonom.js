@@ -50,14 +50,15 @@
         return "angular.module('xonom', []).service('$xonom', function($http) {\r\n var make = " + makeService.toString() + ";\r\n return " + content + " \r\n});";
       };
       getMethods = function(str){
-        var module, require, obj, res, exports, m;
+        var module, require, res, exports, m;
         module = {};
         require = function(){
           return function(){};
         };
-        obj = eval(str, module, require);
+        eval(str, module, require);
         res = [];
         exports = module.exports();
+        console.log(str, module, exports);
         for (m in exports) {
           if (typeof obj[m] === 'function') {
             res.push(m);

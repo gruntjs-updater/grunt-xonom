@@ -37,9 +37,10 @@ module.exports = (grunt)->
             const get-methods = (str)->
                         const module = {}
                         const require = -> ->
-                        const obj = eval str, module, require
+                        eval str, module, require
                         const res = []
                         const exports = module.exports!
+                        console.log str, module, exports
                         for m of exports
                           if typeof obj[m] is \function
                             res.push m
