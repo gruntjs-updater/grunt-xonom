@@ -39,9 +39,7 @@ module.exports = function($db) {
 And use them on client side. Xonom generates middleware for you
 
 
-```Javascript
-angular.module("yourApp", ["xonom"]);
-```
+
 
 
 ```Javascript 
@@ -128,4 +126,8 @@ xonom.require("./xonom.route.js")
   <script type="text/javascript" src="xonom.service.js" />
   ...
 </head>
+```
+
+```Javascript
+angular.module("app", ["xonom"]);
 ```
