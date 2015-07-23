@@ -40,9 +40,8 @@ module.exports = (grunt)->
                         eval str, module, require
                         const res = []
                         const exports = module.exports!
-                        console.log str, module, exports
                         for m of exports
-                          if typeof obj[m] is \function
+                          if typeof exports[m] is \function
                             res.push m
                         res
             const get-methods-from-file = fs.read-file-sync >> (.to-string(\utf-8)) >> get-methods

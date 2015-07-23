@@ -58,9 +58,8 @@
         eval(str, module, require);
         res = [];
         exports = module.exports();
-        console.log(str, module, exports);
         for (m in exports) {
-          if (typeof obj[m] === 'function') {
+          if (typeof exports[m] === 'function') {
             res.push(m);
           }
         }
