@@ -75,7 +75,7 @@ app.controller("user", function($scope, xonom) {
 
 
 #install
-* npm install grunt-xonom
+* npm install xonom grunt-xonom
 * add grunt task grunt-xonom into your gruntfile.js
 
 ```Javascript
@@ -106,10 +106,12 @@ xonom.route.js contains express routes for communication with client
 ```Javascript
 var express = 
   require("express");
+var xonom = 
+  require("xonom");
 
 var router = express();
-  
-require("./xonom.route.js")(router);
+xonom.object("$router", router);
+xonom.require("./xonom.route.js")
 ```
 
 * add line into your angular.js module declaration file
