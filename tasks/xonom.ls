@@ -92,6 +92,7 @@ module.exports = (grunt)->
                 const abs = path.resolve filename
                 const wrap-controller = (content)->
                     " var #camel = $xonom.require('#abs');\r\n
+                      console.log(#camel);\r\n
                       
                       #content
                     "

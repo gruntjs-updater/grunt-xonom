@@ -118,7 +118,7 @@
         camel = camelize(module);
         abs = path.resolve(filename);
         wrapController = function(content){
-          return " var " + camel + " = $xonom.require('" + abs + "');\r\n" + content + "";
+          return " var " + camel + " = $xonom.require('" + abs + "');\r\nconsole.log(" + camel + ");\r\n" + content + "";
         };
         applyRoute = function(name){
           return " $router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
