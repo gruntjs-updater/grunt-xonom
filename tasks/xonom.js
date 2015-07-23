@@ -47,10 +47,10 @@
         return arr.join(d);
       });
       makeAngularService = function(content){
-        return "angular.module('xonom', []).service('xonom', function($http) {\r\n var make = " + makeService.toString() + ";\r\n return " + content + " \r\n});";
+        return "angular.module('xonom', []).service('$xonom', function($http) {\r\n var make = " + makeService.toString() + ";\r\n return " + content + " \r\n});";
       };
       getMethods = function(str){
-        var module, require, obj, res, m;
+        var module, require, obj, res, exports, m;
         module = {
           exports: {}
         };
@@ -59,7 +59,8 @@
         };
         obj = eval(str, module, require);
         res = [];
-        for (m in module.exports) {
+        exports = module.exports();
+        for (m in exports) {
           if (typeof obj[m] === 'function') {
             res.push(m);
           }
@@ -108,14 +109,14 @@
       path = require('path');
       mapRoute = function(filename){
         var module, camel, abs, wrapController, applyRoute;
-        module = filename.match(/([a-z-]+)\.xonom/i)[1];
+        module = filename.match(/([a-z-]+)\.api/i)[1];
         camel = camelize(module);
         abs = path.resolve(filename);
         wrapController = function(content){
           return " var " + camel + " = require('" + abs + "');\r\n" + content + "";
         };
         applyRoute = function(name){
-          return " router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
+          return " $router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
         };
         return wrapController(
         join('\r\n')(
@@ -124,7 +125,7 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function(router) {\r\nvar make = " + makeRoute.toString() + ";\r\n" + content + " \r\n}";
+        return "module.exports = function($router) {\r\nvar make = " + makeRoute.toString() + ";\r\n" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(

@@ -30,7 +30,7 @@ module.exports = (grunt)->
             const join = (d, arr) -->
                arr.join d
             const make-angular-service = (content)->
-                "angular.module('xonom', []).service('xonom', function($http) {
+                "angular.module('xonom', []).service('$xonom', function($http) {
                     \r\n var make = #{make-service.to-string!};
                    \r\n return #content 
                 \r\n});"
@@ -40,7 +40,8 @@ module.exports = (grunt)->
                         const require = -> ->
                         const obj = eval str, module, require
                         const res = []
-                        for m of module.exports
+                        const exports = module.exports!
+                        for m of exports
                           if typeof obj[m] is \function
                             res.push m
                         res
@@ -83,7 +84,7 @@ module.exports = (grunt)->
             const path = require \path
             const map-route = (filename) ->
                 const module = 
-                   filename.match(/([a-z-]+)\.xonom/i).1
+                   filename.match(/([a-z-]+)\.api/i).1
                 const camel = 
                     camelize module
                 const abs = path.resolve filename
@@ -93,7 +94,7 @@ module.exports = (grunt)->
                       #content
                     "
                 const apply-route = (name)->
-                   " router.post('/#module/#name', make(#camel.#name));
+                   " $router.post('/#module/#name', make(#camel.#name));
                    "
                 
                 filename |> get-methods-from-file
@@ -102,7 +103,7 @@ module.exports = (grunt)->
                          |> wrap-controller
                 
             const apply-template = (content)->
-              "module.exports = function(router) {\r\n
+              "module.exports = function($router) {\r\n
                      var make = #{make-route.to-string!};\r\n
                      #content \r\n
                   }
