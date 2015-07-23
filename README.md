@@ -127,7 +127,7 @@ xonom.require("./xonom.route.js")
 
 ```Javascript
 angular.module("yourApp", ["xonom"]);
-angular.controller("userController", function(xonom) {
+angular.controller("userController", function($xonom) {
 
  //use xonom inside controller
 
