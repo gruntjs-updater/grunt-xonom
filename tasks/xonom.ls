@@ -89,7 +89,7 @@ module.exports = (grunt)->
                     camelize module
                 const abs = path.resolve filename
                 const wrap-controller = (content)->
-                    " var #camel = require('#abs');\r\n
+                    " var #camel = $xonom.require('#abs');\r\n
                       
                       #content
                     "
@@ -103,7 +103,7 @@ module.exports = (grunt)->
                          |> wrap-controller
                 
             const apply-template = (content)->
-              "module.exports = function($router) {\r\n
+              "module.exports = function($router, $xonom) {\r\n
                      var make = #{make-route.to-string!};\r\n
                      #content \r\n
                   }

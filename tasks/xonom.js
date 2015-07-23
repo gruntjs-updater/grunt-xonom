@@ -113,7 +113,7 @@
         camel = camelize(module);
         abs = path.resolve(filename);
         wrapController = function(content){
-          return " var " + camel + " = require('" + abs + "');\r\n" + content + "";
+          return " var " + camel + " = $xonom.require('" + abs + "');\r\n" + content + "";
         };
         applyRoute = function(name){
           return " $router.post('/" + module + "/" + name + "', make(" + camel + "." + name + "));";
@@ -125,7 +125,7 @@
         filename))));
       };
       applyTemplate = function(content){
-        return "module.exports = function($router) {\r\nvar make = " + makeRoute.toString() + ";\r\n" + content + " \r\n}";
+        return "module.exports = function($router, $xonom) {\r\nvar make = " + makeRoute.toString() + ";\r\n" + content + " \r\n}";
       };
       return fs.writeFileSync(output.expressRoute, applyTemplate(
       join('\r\n')(
