@@ -57,7 +57,14 @@
         };
         eval(str, module, require);
         res = [];
-        exports = module.exports();
+        exports = (function(){
+          switch (false) {
+          case typeof module.exports !== 'function':
+            return module.exports();
+          default:
+            return module.exports;
+          }
+        }());
         for (m in exports) {
           if (typeof exports[m] === 'function') {
             res.push(m);

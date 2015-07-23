@@ -39,7 +39,10 @@ module.exports = (grunt)->
                         const require = -> ->
                         eval str, module, require
                         const res = []
-                        const exports = module.exports!
+                        
+                        const exports =
+                            | typeof module.exports is \function => module.exports!
+                            | _ => module.exports
                         for m of exports
                           if typeof exports[m] is \function
                             res.push m
