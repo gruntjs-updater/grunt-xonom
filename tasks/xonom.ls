@@ -15,10 +15,11 @@ module.exports = (grunt)->
                       .error (err)-> callback err
             const make-route = @options!.make-route ? (func) ->
                 (req, resp) !->
-                    req.body.push (result)->
+                    body = req.body ? []
+                    body.push (result)->
                       resp.send do 
                           result: result
-                    func.apply this, req.body
+                    func.apply this, body
             
             #input: server controllers filenames array
             #output: generated angular service 'api'
