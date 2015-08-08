@@ -23,12 +23,16 @@
         ? ref$
         : function(func){
           return function(req, resp){
-            req.body.push(function(result){
+            var body, ref$;
+            body = (ref$ = req.body) != null
+              ? ref$
+              : [];
+            body.push(function(result){
               return resp.send({
                 result: result
               });
             });
-            func.apply(this, req.body);
+            func.apply(this, body);
           };
         };
       fs = require('fs');

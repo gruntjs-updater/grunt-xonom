@@ -1,45 +1,31 @@
 {
-  "_from": "grunt-xonom-api@>0.1",
-  "dist": {
-    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f6",
-    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
-  },
-  "description": "Provides clean communication between angular and express",
-  "name": "grunt-xonom",
-  "uperversion": "0.1",
-  "version": "0.1.36",
-  "homepage": "https://github.com/gruntjs/",
-  "subversion": 36,
-  "scripts": {
-    "test": "grunt test"
-  },
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.0"
-  },
-  "dependencies": {
-    "xonom": "latest"
-  },
-  "keywords": [
-    "gruntplugin"
-  ],
-  "peerDependencies": {
-    "grunt": "~0.4.0"
-  },
-  "_id": "grunt-xonom-api@0.6.0",
   "files": [
     "tasks",
     "LICENSE-MIT"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:askucher/grunt-xonom.git"
+  "_id": "grunt-xonom-api@0.6.0",
+  "peerDependencies": {
+    "grunt": "~0.4.0"
   },
-  "author": {
-    "name": "Gotogether",
-    "url": "http://gruntjs.com/"
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "xonom": "latest"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "_from": "grunt-xonom-api@>0.1",
+  "dist": {
+    "shasum": "f532dba4b8212674c7c013e146bda6638b9048f6",
+    "tarball": "http://registry.npmjs.org/grunt-contrib-clean/-/grunt-contrib-clean-0.6.0.tgz"
   },
   "_npmUser": {
     "name": "askucher",
@@ -58,5 +44,19 @@
       "type": "MIT",
       "url": "https://github.com/askucher/grunt-xonom/blob/master/LICENSE-MIT"
     }
-  ]
+  ],
+  "author": {
+    "name": "Gotogether",
+    "url": "http://gruntjs.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:askucher/grunt-xonom.git"
+  },
+  "subversion": 37,
+  "homepage": "https://github.com/gruntjs/",
+  "version": "0.1.37",
+  "uperversion": "0.1",
+  "name": "grunt-xonom",
+  "description": "Provides clean communication between angular and express"
 }
